@@ -16,3 +16,4 @@ static-html             # Define static page content in .html files
 react-meteor-data
 aldeed:collection2@3.0.0
 mdg:validated-method
+hot-module-replacement
