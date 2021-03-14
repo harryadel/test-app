@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "test": "meteor test --once --driver-package meteortesting:mocha"
+    "test": "meteor test --driver-package meteortesting:mocha --full-app"
   },
   "devDependencies": {
     "@types/chai": "4.1.7",

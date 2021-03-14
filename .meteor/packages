@@ -17,3 +17,4 @@ react-meteor-data
 aldeed:collection2@3.0.0
 mdg:validated-method
 hot-module-replacement
+meteortesting:mocha
