@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ({ name, hasDescription, commentsCount, highest, filesCount, timer, completed }) {
+export default function ({ title, hasDescription, commentsCount, customFields, filesCount, timer, status }) {
   return (
     <div className="task">
       <a
@@ -10,40 +10,40 @@ export default function ({ name, hasDescription, commentsCount, highest, filesCo
         <div className="task-link-head">
           <div className="task-checkbox">
             <label className="checkbox">
-              <input type="checkbox" defaultChecked={completed} />
+              <input type="checkbox" defaultChecked={status} />
               <span className="checkbox-toggle">
                 <i className="checkbox-icon icon-check" />
               </span>
             </label>
           </div>
           <div className="task-title">
-            <p>{name}</p>
+            <p>{title}</p>
           </div>
         </div>
         <div className="task-link-body">
           <div className="indicators">
-            {hasDescription &&
+            {!!hasDescription &&
               (
                 <span className="icon-indicator">
                   <i className="icon-description" />
                 </span>
               )
             }
-            {commentsCount &&
+            {!!commentsCount &&
               (
                 <span className="icon-indicator">
                   <i className="icon-chat" />
                 </span>
               )
             }
-            {filesCount &&
+            {!!filesCount &&
               (
                 <span className="icon-indicator">
                   <i className="icon-attach" />
                 </span>
               )
             }
-            {timer &&
+            {!!timer &&
               (
                 <span className="icon-indicator">
                   <i className="icon-timer" />
@@ -51,17 +51,17 @@ export default function ({ name, hasDescription, commentsCount, highest, filesCo
               )
             }
           </div>
-          {highest && (
-            <div className="custom-fields">
-              <div className="custom-field custom-field-single">
+          <div className="custom-fields">
+            {customFields && customFields.map(({ _id, value }) => (
+              <div key={_id} className="custom-field custom-field-single">
                 <p className="color-light has-color-tag">
                   <span className="field-background" />
-                  <span className="field-title">Highest</span>
+                  <span className="field-title">{value}</span>
                 </p>
               </div>
-            </div>
-          )
-          }
+            ))
+            }
+          </div>
         </div>
       </a>
     </div>

@@ -11,17 +11,17 @@ export const getTasks = new ValidatedMethod({
       type: Date,
       optional: true
     },
-    status: { type: String, optional: true, defaultValue: 'incomplete' },
+    status: { type: String, optional: true },
     color: { type: String, optional: true },
     customFields: {
       type: Array,
       optional: true
     },
     'customFields.$': Object,
-    'customFields.$.id': String,
+    'customFields.$._id': String,
     'customFields.$.value': String
   }).validator(),
   run({ title, dueDate, status, color, customFields }) {
-    return Tasks.insert({ title, dueDate, status, color, customFields });
+    return Tasks.insert({ title, dueDate, status, color, customFields, status: status ? status : 'incomplete' });
   }
 })
